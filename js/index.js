@@ -95,9 +95,9 @@ function removeRow(event) {
 
 /* Search data by fullName */
 let searchBox = document.querySelector("#search");
-let rows = document.querySelectorAll("tbody tr");
 
 searchBox.addEventListener("keyup", function (e) {
+  let rows = document.querySelectorAll("tbody tr");
   const fetch = e.target.value.toLowerCase();
   rows.forEach((row) => {
     row.querySelector("td:nth-child(2)").textContent.toLowerCase().includes(fetch) ? (row.style.display = "") : (row.style.display = "none");
@@ -105,8 +105,8 @@ searchBox.addEventListener("keyup", function (e) {
 });
 
 // filter by faculty
-
 function facultyS() {
+  let rows = document.querySelectorAll("tbody tr");
   let facultySelect = document.querySelector("#select_by_faculty");
   const fetch = facultySelect.value.toLowerCase();
   rows.forEach((row) => {
@@ -115,6 +115,7 @@ function facultyS() {
 }
 // filter by program study
 function prodiS() {
+  let rows = document.querySelectorAll("tbody tr");
   let prodiSelect = document.querySelector("#filter_by_pStudy");
   const fetch = prodiSelect.value.toLowerCase();
   rows.forEach((row) => {
