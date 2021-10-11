@@ -36,7 +36,7 @@ h2 {
 }
 
 #addStudent {
-  display: block;
+  display: none;
 }
 
 #listStudent {
