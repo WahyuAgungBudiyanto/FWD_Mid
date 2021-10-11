@@ -1,0 +1,44 @@
+:root {
+  font-family: "Roboto", sans-serif;
+  background-color: rgb(255, 255, 255);
+}
+
+.bg-purple {
+  background-color: #7a57d1;
+  color: #fff;
+}
+
+.text-purple {
+  color: #7a57d1;
+}
+
+/* change button color */
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:visited,
+.btn-primary:focus,
+.btn-primary:active:focus {
+  background-color: #7a57d1;
+}
+
+#delete .ms-1 {
+  margin-left: 0.3em !important;
+}
+
+#title-text h1,
+h2 {
+  font-size: 3em;
+}
+
+#show-hide-btn {
+  width: 250px;
+}
+
+#addStudent {
+  display: block;
+}
+
+#listStudent {
+  margin: auto;
+}

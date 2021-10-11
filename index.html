@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Icons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="images/icons/favicon-32x32.png" />
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous" />
+
+    <!-- My CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+
+    <title>StudentListApp | VanillaJS</title>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar sticky-top navbar-expand-sm navbar-dark bg-purple shadow">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">Student Management</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- End Navbar -->
+
+    <!-- Title Text -->
+    <section id="title-text" class="container mt-3">
+      <h1 class="text-purple">Student Management</h1>
+      <h2>MiniApp</h2>
+    </section>
+    <!-- End Title Text -->
+
+    <!-- Content -->
+    <section id="content" class="container">
+      <hr />
+      <div class="row">
+        <!-- Add Students -->
+        <div class="col-md-8">
+          <div class="container-fluid p-2 my-3 shadow d-grid gap-2">
+            <h3>Add Student</h3>
+            <button id="show-hide-btn" class="btn btn-primary" type="button">Show Forms Add New Student</button>
+            <form onsubmit="event.preventDefault();" autocomplete="off" id="addStudent" class="mt-2">
+              <div class="mb-3">
+                <label for="studentId" class="form-label">Student ID (NIM)</label>
+                <input type="number" class="form-control" id="studentId" placeholder="105021910044" required />
+              </div>
+              <div class="mb-3">
+                <label for="studentName" class="form-label">Full Name</label>
+                <input type="text" class="form-control" id="studentName" placeholder="John Doe" required />
+              </div>
+              <div class="mb-3">
+                <label for="gender" class="form-label">Gender</label>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="gender" id="male" value="Male" />
+                  <label class="form-check-label" for="male"> Male </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="gender" id="female" value="Female" />
+                  <label class="form-check-label" for="female"> Female </label>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="faculty">Faculty</label>
+                <select class="form-select mt-2" id="faculty" name="faculty" required>
+                  <option value="0" selected>--SELECT FACULTY --</option>
+                  <option value="1">Pascasarjana</option>
+                  <option value="2">Fakultas Filsafat</option>
+                  <option value="3">Fakultas Keguruan dan Ilmu Pendidikan</option>
+                  <option value="4">Fakultas Ekonomi dan Bisnis</option>
+                  <option value="5">Fakultas Pertanian</option>
+                  <option value="6">Fakultas Ilmu Komputer</option>
+                  <option value="7">Fakultas Keperawatan</option>
+                  <option value="8">Akademi Sekretari Manajemen Indonesia Klabat</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="pStudy">Program of Study</label>
+                <select class="form-select mt-2" id="pStudy" name="pStudy" required>
+                  <option value="0" selected>--SELECT PROGRAM OF STUDY --</option>
+                </select>
+              </div>
+
+              <button id="add" type="submit" class="btn btn-primary">Add Student</button>
+            </form>
+          </div>
+        </div>
+        <!-- End Add Students -->
+
+        <!-- Filter Students -->
+        <div class="col-md-4 ms-auto">
+          <div class="container-fluid shadow d-grid gap-2 p-2 mt-3">
+            <h3>Filter Students By</h3>
+            <div class="form-floating d-grid gap-2">
+              <select class="form-select" id="select_by_faculty">
+                <option value="0" selected>--SELECT FACULTY --</option>
+                <option value="Pascasarjana">Pascasarjana</option>
+                <option value="Fakultas Filsafat">Fakultas Filsafat</option>
+                <option value="Fakultas Keguruan dan Ilmu Pendidikan">Fakultas Keguruan dan Ilmu Pendidikan</option>
+                <option value="Fakultas Ekonomi dan Bisnis">Fakultas Ekonomi dan Bisnis</option>
+                <option value="Fakultas Pertanian">Fakultas Pertanian</option>
+                <option value="Fakultas Ilmu Komputer">Fakultas Ilmu Komputer</option>
+                <option value="Fakultas Keperawatan">Fakultas Keperawatan</option>
+                <option value="Akademi Sekretari Manajemen Indonesia Klabat">Akademi Sekretari Manajemen Indonesia Klabat</option>
+              </select>
+              <label for="select_by_faculty">Faculty</label>
+              <button class="btn btn-primary" type="button" onclick="facultyS()">Show Students</button>
+            </div>
+
+            <div class="form-floating d-grid gap-2 mt-3 mb-2">
+              <select class="form-select" id="filter_by_pStudy">
+                <option selected>--SELECT PROGRAM OF STUDY --</option>
+                <option>Agroteknologi</option>
+                <option>Akuntansi</option>
+                <option>Ilmu Filsafat</option>
+                <option>Informatika</option>
+                <option>Keperawatan</option>
+                <option>Magister Manajemen</option>
+                <option>Magister Teologi</option>
+                <option>Manajemen</option>
+                <option>Pendidikan Agama</option>
+                <option>Pendidikan Bahasa Inggris</option>
+                <option>Pendidikan Ekonomi</option>
+                <option>Pendidikan Luar Sekolah</option>
+                <option>Profesi Ners</option>
+                <option>Sekretari (D3)</option>
+                <option>Sistem Informasi</option>
+              </select>
+              <label for="filter_by_pStudy">Program of Study</label>
+              <button class="btn btn-primary" type="submit" onclick="prodiS()">Show Students</button>
+            </div>
+          </div>
+        </div>
+        <!-- End Filter Students -->
+      </div>
+      <hr />
+    </section>
+    <!-- End Content -->
+
+    <!-- Students List -->
+    <section class="container my-2">
+      <h2 class="text-center">Our Students</h2>
+      <input type="text" class="form-control mb-3" id="search" placeholder="Search student by name..." onkeydown="return (event.keyCode!=13);" />
+      <div class="table-responsive shadow p-1">
+        <table id="studentsList" class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Student ID (NIM)</th>
+              <th scope="col">Full Name</th>
+              <th scope="col">Gender</th>
+              <th scope="col">Faculty</th>
+              <th scope="col">Program of Study</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="py-3">105021910044</td>
+              <td class="py-3">Wahyu Agung</td>
+              <td class="py-3">Male</td>
+              <td class="py-3">Fakultas Ilmu Komputer</td>
+              <td class="py-3">Informatika</td>
+              <td>
+                <button class="btn btn-danger btn-md ms-1 rounded-2" onclick="removeRow(this)" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+              </td>
+            </tr>
+            <tr>
+              <td class="py-3">105021910045</td>
+              <td class="py-3">John Doe</td>
+              <td class="py-3">Male</td>
+              <td class="py-3">Fakultas Keguruan dan Ilmu Pendidikan</td>
+              <td class="py-3">Pendidikan Agama</td>
+              <td>
+                <button class="btn btn-danger btn-md ms-1 rounded-2" onclick="removeRow(this)" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+              </td>
+            </tr>
+            <tr>
+              <td class="py-3">105021910046</td>
+              <td class="py-3">Meilan Chaster</td>
+              <td class="py-3">Female</td>
+              <td class="py-3">Fakultas Ilmu Komputer</td>
+              <td class="py-3">Sistem Informasi</td>
+              <td>
+                <button class="btn btn-danger btn-md ms-1 rounded-2" onclick="removeRow(this)" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <!-- End Students List -->
+    <!-- Footer -->
+    <footer class="bg-purple text-center mt-5">
+      <div class="text-center p-3">
+        made with <i class="fab fa-html5"></i> <i class="fab fa-bootstrap"></i> <i class="fab fa-js-square"></i><br />
+        ©
+        <script type="text/javascript">
+          document.write(new Date().getFullYear());
+        </script>
+        Wahyu Agung. All rights reserved.
+      </div>
+    </footer>
+    <!-- End Footer -->
+  </body>
+
+  <!-- My JS -->
+  <script src="js/index.js"></script>
+  <script src="https://code.jquery.com/jquery-2.2.4.js"></script>
+
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/4c93bd3202.js" crossorigin="anonymous"></script>
+
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+
+  <!-- Option 2: Separate Popper and Bootstrap JS -->
+  <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
+    -->
+</html>
