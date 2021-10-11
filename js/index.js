@@ -114,3 +114,10 @@ function facultyS() {
   });
 }
 // filter by program study
+function prodiS() {
+  let prodiSelect = document.querySelector("#filter_by_pStudy");
+  const fetch = prodiSelect.value.toLowerCase();
+  rows.forEach((row) => {
+    row.querySelector("td:nth-child(5)").textContent.toLowerCase().includes(fetch) ? (row.style.display = "") : (row.style.display = "none");
+  });
+}
