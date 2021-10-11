@@ -58,11 +58,11 @@
             <form onsubmit="event.preventDefault();" autocomplete="off" id="addStudent" class="mt-2">
               <div class="mb-3">
                 <label for="studentId" class="form-label">Student ID (NIM)</label>
-                <input type="number" class="form-control" id="studentId" placeholder="105021910044" required />
+                <input type="number" class="form-control" id="studentId" placeholder="105021910044" />
               </div>
               <div class="mb-3">
                 <label for="studentName" class="form-label">Full Name</label>
-                <input type="text" class="form-control" id="studentName" placeholder="John Doe" required />
+                <input type="text" class="form-control" id="studentName" placeholder="John Doe" />
               </div>
               <div class="mb-3">
                 <label for="gender" class="form-label">Gender</label>
@@ -77,8 +77,8 @@
               </div>
               <div class="mb-3">
                 <label for="faculty">Faculty</label>
-                <select class="form-select mt-2" id="faculty" name="faculty" required>
-                  <option value="0" selected>--SELECT FACULTY --</option>
+                <select class="form-select mt-2" id="faculty" name="faculty">
+                  <option value="" selected disabled>--SELECT FACULTY --</option>
                   <option value="1">Pascasarjana</option>
                   <option value="2">Fakultas Filsafat</option>
                   <option value="3">Fakultas Keguruan dan Ilmu Pendidikan</option>
@@ -91,8 +91,8 @@
               </div>
               <div class="mb-3">
                 <label for="pStudy">Program of Study</label>
-                <select class="form-select mt-2" id="pStudy" name="pStudy" required>
-                  <option value="0" selected>--SELECT PROGRAM OF STUDY --</option>
+                <select class="form-select mt-2" id="pStudy" name="pStudy">
+                  <option value="" selected disabled>--SELECT PROGRAM OF STUDY --</option>
                 </select>
               </div>
 
@@ -108,7 +108,7 @@
             <h3>Filter Students By</h3>
             <div class="form-floating d-grid gap-2">
               <select class="form-select" id="select_by_faculty">
-                <option value="0" selected>--SELECT FACULTY --</option>
+                <option value="" selected>--SELECT FACULTY --</option>
                 <option value="Pascasarjana">Pascasarjana</option>
                 <option value="Fakultas Filsafat">Fakultas Filsafat</option>
                 <option value="Fakultas Keguruan dan Ilmu Pendidikan">Fakultas Keguruan dan Ilmu Pendidikan</option>
@@ -124,7 +124,7 @@
 
             <div class="form-floating d-grid gap-2 mt-3 mb-2">
               <select class="form-select" id="filter_by_pStudy">
-                <option selected>--SELECT PROGRAM OF STUDY --</option>
+                <option value="" selected>--SELECT PROGRAM OF STUDY --</option>
                 <option>Agroteknologi</option>
                 <option>Akuntansi</option>
                 <option>Ilmu Filsafat</option>

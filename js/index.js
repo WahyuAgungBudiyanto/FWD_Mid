@@ -55,11 +55,25 @@ function addStudent(e) {
   //get data input
   let nim = document.querySelector("#studentId").value;
   let fullName = document.querySelector("#studentName").value;
-  let gender = document.querySelector("input[name=gender]:checked").value;
-  let faculty = document.querySelector("#faculty").options[document.querySelector("#faculty").selectedIndex].textContent;
-  let prodi = document.querySelector("#pStudy").options[document.querySelector("#pStudy").selectedIndex].textContent;
+  let gender = document.querySelector("input[name=gender]:checked");
+  let faculty = document.querySelector("#faculty").options[document.querySelector("#faculty").selectedIndex];
+  let prodi = document.querySelector("#pStudy").options[document.querySelector("#pStudy").selectedIndex];
 
-  let template = `
+  if (!nim) {
+    alert("NIM Masih kosong");
+  } else if (!fullName) {
+    alert("Nama Masih kosong");
+  } else if (!gender) {
+    alert("Gender Masih kosong");
+  } else if (!faculty.value) {
+    alert("Faculty Masih kosong");
+  } else if (!prodi.value) {
+    alert("Prodi Masih kosong");
+  } else {
+    gender = gender.value;
+    faculty = faculty.textContent;
+    prodi = prodi.textContent;
+    let template = `
                   <tr>
                     <td class="py-3">${nim}</td>
                     <td class="py-3">${fullName}</td>
@@ -69,7 +83,8 @@ function addStudent(e) {
                     <td><button class="btn btn-danger btn-md ms-1 rounded-2" onclick="removeRow(this)" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button></td>
                   </tr>`;
 
-  table.querySelector("tbody").innerHTML += template;
+    table.querySelector("tbody").innerHTML += template;
+  }
 }
 
 /* Delete row */
@@ -91,5 +106,11 @@ searchBox.addEventListener("keyup", function (e) {
 
 // filter by faculty
 
-
+function facultyS() {
+  let facultySelect = document.querySelector("#select_by_faculty");
+  const fetch = facultySelect.value.toLowerCase();
+  rows.forEach((row) => {
+    row.querySelector("td:nth-child(4)").textContent.toLowerCase().includes(fetch) ? (row.style.display = "") : (row.style.display = "none");
+  });
+}
 // filter by program study
