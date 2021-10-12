@@ -21,10 +21,9 @@ facultySelection.addEventListener("change", (e) => {
   let prodies = faculties[val];
 
   if (!prodies) {
-    pStudy.innerHTML = `<option value="0">-- SELECT PROGRAM STUDY --</option>`;
-    return;
+    return (prodiSelection.innerHTML = `<option value="0">-- SELECT PROGRAM STUDY --</option>`);
   }
-  pStudy.innerHTML = prodies.map((p) => `<option value="${p}">${p}</option>`).join("");
+  prodiSelection.innerHTML = prodies.map((p) => `<option value="${p}">${p}</option>`).join("");
 });
 
 //creating variables to save ID element
@@ -60,15 +59,15 @@ function addStudent(e) {
   let prodi = document.querySelector("#pStudy").options[document.querySelector("#pStudy").selectedIndex];
 
   if (!nim) {
-    alert("NIM Masih kosong");
+    alert("Please enter your NIM");
   } else if (!fullName) {
-    alert("Nama Masih kosong");
+    alert("Please enter your Full Name");
   } else if (!gender) {
-    alert("Gender Masih kosong");
+    alert("Please choose your Gender");
   } else if (!faculty.value) {
-    alert("Faculty Masih kosong");
+    alert("Please choose your Faculty");
   } else if (!prodi.value) {
-    alert("Prodi Masih kosong");
+    alert("Please choose your Program of Study");
   } else {
     let aRow = confirm(`Are you sure to add ${fullName}?`);
     if (aRow) {
