@@ -40,7 +40,7 @@
     <!-- End Navbar -->
 
     <!-- Title Text -->
-    <section id="title-text" class="container mt-3">
+    <section id="header-text" class="container mt-3">
       <h1 class="text-purple">Student Management</h1>
       <h2>MiniApp</h2>
     </section>
@@ -78,7 +78,7 @@
               <div class="mb-3">
                 <label for="faculty">Faculty</label>
                 <select class="form-select mt-2" id="faculty" name="faculty">
-                  <option value="" selected disabled>--SELECT FACULTY --</option>
+                  <option value="" selected>--SELECT FACULTY --</option>
                   <option value="1">Pascasarjana</option>
                   <option value="2">Fakultas Filsafat</option>
                   <option value="3">Fakultas Keguruan dan Ilmu Pendidikan</option>
@@ -92,7 +92,7 @@
               <div class="mb-3">
                 <label for="pStudy">Program of Study</label>
                 <select class="form-select mt-2" id="pStudy" name="pStudy">
-                  <option value="" selected disabled>--SELECT PROGRAM OF STUDY --</option>
+                  <option value="" selected>--SELECT PROGRAM OF STUDY --</option>
                 </select>
               </div>
 
@@ -153,7 +153,7 @@
     <!-- End Content -->
 
     <!-- Students List -->
-    <section class="container my-2">
+    <section id="student-table" class="container my-2">
       <h2 class="text-center">Our Students</h2>
       <input type="text" class="form-control mb-3" id="search" placeholder="Search student by name..." onkeydown="return (event.keyCode!=13);" />
       <div class="table-responsive shadow p-1">

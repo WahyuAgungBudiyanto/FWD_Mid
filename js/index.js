@@ -70,27 +70,39 @@ function addStudent(e) {
   } else if (!prodi.value) {
     alert("Prodi Masih kosong");
   } else {
-    gender = gender.value;
-    faculty = faculty.textContent;
-    prodi = prodi.textContent;
-    let template = `
-                  <tr>
-                    <td class="py-3">${nim}</td>
-                    <td class="py-3">${fullName}</td>
-                    <td class="py-3">${gender}</td>
-                    <td class="py-3">${faculty}</td>
-                    <td class="py-3">${prodi}</td>
-                    <td><button class="btn btn-danger btn-md ms-1 rounded-2" onclick="removeRow(this)" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button></td>
-                  </tr>`;
+    let aRow = confirm(`Are you sure to add ${fullName}?`);
+    if (aRow) {
+      gender = gender.value;
+      faculty = faculty.textContent;
+      prodi = prodi.textContent;
+      let template = `
+                    <tr>
+                      <td class="py-3">${nim}</td>
+                      <td class="py-3">${fullName}</td>
+                      <td class="py-3">${gender}</td>
+                      <td class="py-3">${faculty}</td>
+                      <td class="py-3">${prodi}</td>
+                      <td><button class="btn btn-danger btn-md ms-1 rounded-2" onclick="removeRow(this)" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button></td>
+                    </tr>`;
 
-    table.querySelector("tbody").innerHTML += template;
+      table.querySelector("tbody").innerHTML += template;
+    } else {
+      alert("cancelled!");
+    }
   }
 }
 
 /* Delete row */
 function removeRow(event) {
   let p = event.parentNode.parentNode;
-  p.parentNode.removeChild(p);
+  fullName = p.querySelector("td:nth-child(2)").textContent;
+  let rRow = confirm(`Are you sure to delete ${fullName}?`);
+  if (rRow) {
+    p.parentNode.removeChild(p);
+    alert(`${fullName} has been removed!`);
+  } else {
+    alert("cancelled!");
+  }
 }
 
 /* Search data by fullName */
